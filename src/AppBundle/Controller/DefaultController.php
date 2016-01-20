@@ -7,12 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Stopwatch\Stopwatch;
-use Buzz\Browser;
-use RCel\WeatherApi\OpenWeatherClient;
-use RCel\WeatherApi\OpenWeatherClientWatch;
-use RCel\BookReader\Infrastructure\InMemoryBookShelf;
-use RCel\BookReader\Application\BookService;
+//use Symfony\Component\Stopwatch\Stopwatch;
+//use Buzz\Browser;
+//use RCel\WeatherApi\OpenWeatherClient;
+//use RCel\WeatherApi\OpenWeatherClientWatch;
+//use RCel\BookReader\Infrastructure\InMemoryBookShelf;
+//use RCel\BookReader\Application\BookService;
 
 class DefaultController extends Controller
 {
@@ -76,11 +76,14 @@ class DefaultController extends Controller
     {
         $city = $request->get('city');
 
-        $buzz = new Browser();
-        $watch = new Stopwatch();
+//       $buzz = new Browser();
+        $buzz = $this->get('buzz');
+//        $watch = new Stopwatch();
+        $watch = $this->get('stopwatch');
 
-        $weatherClient = new OpenWeatherClientWatch($buzz,$city,$watch);
-        $weatherClient->getData();
+//        $weatherClient = new OpenWeatherClientWatch($buzz,$city,$watch);
+        $weatherClient = $this->get('rcel.open_weather_client_watch2');
+        $weatherClient->getData($city);
         $temp = $weatherClient->displayTemperature();
         $time = $weatherClient->displayTime();
         return $this->render('::weather.html.twig',

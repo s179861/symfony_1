@@ -14,3 +14,15 @@ services:
         class: RCel\BookReader\Application\BookService
         arguments:
             - '@rcel.book_library'
+
+    buzz:
+        class: Buzz\Browser
+
+    stopwatch:
+        class: Symfony\Component\Stopwatch\Stopwatch
+
+    rcel.open_weather_client_watch2:
+        class: RCel\WeatherApi\OpenWeatherClientWatch2
+        arguments:
+            - '@buzz'
+            - '@stopwatch'
