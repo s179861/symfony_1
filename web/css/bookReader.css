@@ -1,0 +1,40 @@
+body {
+  background-color: orange;
+}
+
+.naglowek {
+  background-color: orange;
+}
+
+.stopka {
+  background-color: black;
+  color: white;
+}
+
+.srodek {
+  background-color: orange;
+}
+
+.pasek {
+  background-color: orange;
+}
+
+.zawartosc {
+  background-color: white;
+}
+
+.spod_zawartosci {
+  padding: 15px;
+}
+
+.numer_strony {
+  text-align: center;
+}
+
+.lewy {
+  text-align: left;
+}
+
+.prawy {
+  text-align: right;
+}

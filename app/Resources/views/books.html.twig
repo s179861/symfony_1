@@ -2,60 +2,24 @@
 <html>
     <head>
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-        <style type="text/css">
-        /*<![CDATA[ */
-            body {
-                background-color: orange;
-            }
-
-            .naglowek {
-                background-color: orange;
-            }
-
-            .stopka {
-                background-color: black;
-                color: white;
-            }
-
-            .srodek {
-                background-color: orange;
-            }
-
-            .pasek {
-                background-color: orange;
-            }
-
-            .zawartosc {
-                background-color: white;
-            }
-
-	    .spod_zawartosci {
-		padding: 15px;
-	    }
-
-            .numer_strony {
-                text-align: center;
-	    }
-
-	    .lewy {
-		text-align: left;
-	    }
-
-	    .prawy {
-		text-align: right;
-	    }
-        /* ]]>*/
-        </style>
+       <link rel="Stylesheet" type="text/css" href="{{ asset('css/bookReader.css') }}"/>
     </head>
     <body>
         <div class="naglowek col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
         </div>
         <div class="srodek">
             <center><h1>{{ title }}</h1></center>
         </div>
         <div class="pasek col-xs-12 col-sm-12 col-md-2 col-lg-2">
-           <table id="linki_stron"></table> 
+           <div class="linki_stron">
+	     <table>
+	       {% for page_number in 1..pages_quantity %}
+	         <tr><td>
+	           <a href="{{ page_number - 1 }}">Strona {{ page_number }}</a>
+                 </td></tr>
+	       {% endfor %}	
+	     </table>
+           </div>
         </div>
         <div class="zawartosc col-xs-12 col-sm-12 col-md-10 col-lg-10">
                 {{ content }}
@@ -74,21 +38,5 @@
         <div class="stopka col-xs-12 col-sm-12 col-md-12 col-lg-12">
             Radosław Celary</br>
         </div>
-	<script type="text/javascript">
-	    for(var i = 0 ; i < {{ pages_quantity }} ; i++) {
-		var tr = document.createElement('tr');
-		var td = document.createElement('td');
-		var element = document.createElement('a');
-		element.href = i;
-		var text = document.createTextNode('Strona '+(i+1));
-
-		tr.appendChild(td);
-		td.appendChild(element);
-		element.appendChild(text);
-
-	        var body = document.getElementById('linki_stron');
-	        body.appendChild(tr);
-	    }
-	</script>
     </body>
 </html>
