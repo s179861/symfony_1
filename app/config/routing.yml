@@ -1,0 +1,33 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+aboutme:
+    path: /o-mnie
+    defaults:
+        _controller: AppBundle:Default:card
+
+person:
+    path: /person/{name}
+    defaults:
+        _controller: AppBundle:Default:person
+
+weather:
+    path: /weather/{city}
+    defaults:
+        _controller: AppBundle:Default:weather
+
+books:
+    path: /books/{book}/{page}
+    defaults:
+        _controller: AppBundle:Default:books
+
+set_name:
+    path: /config/name/{name}
+    defaults:
+        _controller: AppBundle:Default:setName
+
+name:
+    path: /hello
+    defaults:
+        _controller: AppBundle:Default:hello
